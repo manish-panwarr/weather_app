@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --card-padding: 20px 35px;
+    --details-margin-top: 50px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #222;
+    /* Default background */
+    background-image: url('https://images.unsplash.com/photo-1534088564585-0610b0553bb2?q=80&w=1974&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    transition: background-image 1.5s ease-in-out;
+}
+
+/* --- Dynamic Background Classes --- */
+body.weather-bg-clear {
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop');
+}
+body.weather-bg-clouds {
+    background-image: url('https://images.unsplash.com/photo-1499956827185-0d63ee78a910?q=80&w=1974&auto=format&fit=crop');
+}
+body.weather-bg-rain, body.weather-bg-drizzle {
+    background-image: url('https://images.unsplash.com/photo-1519692933481-e162a57d6721?q=80&w=2070&auto=format&fit=crop');
+}
+body.weather-bg-mist, body.weather-bg-haze, body.weather-bg-fog {
+    background-image: url('https://images.unsplash.com/photo-1487621167305-5d248087c82a?q=80&w=1974&auto=format&fit=crop');
+}
+body.weather-bg-snow {
+    background-image: url('https://images.unsplash.com/photo-1491002052546-bf38f186af56?q=80&w=2108&auto=format&fit=crop');
+}
+body.weather-bg-thunderstorm {
+     background-image: url('https://images.unsplash.com/photo-1605727226462-cd3834a41334?q=80&w=1974&auto=format&fit=crop');
+}
+
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.titleContainer {
+    text-align: center;
+}
+
+.title {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.title img {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    transition: transform 0.3s ease;
+}
+
+.title:hover img {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.title h2 {
+    font-family: "Henny Penny", system-ui;
+    font-size: clamp(2rem, 5vw, 2.5rem); /* Responsive font size */
+    font-weight: 400;
+}
+
+.card {
+    width: 99%;
+    max-width: 500px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    border-radius: 20px;
+    padding: var(--card-padding);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding-left: 11px ;
+    height: 50px;
+    border-radius: 30px;
+    flex: 1;
+   
+    transition: background 0.3s ease;
+    font-family: "Alumni Sans Pinstripe", cursive;
+    font-size: 22px;
+}
+
+.search input::placeholder { color: #eee; }
+.search input:focus { background: rgba(255, 255, 255, 0.3); }
+
+.search button {
+    border: 0;
+    outline: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.search button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+.search button img { width: 20px; }
+
+.weather, .error, .loader, .initial-prompt {
+    display: none;
+    margin-top: 5px;
+}
+
+.initial-prompt { display: block; padding: 40px 0 40px 10px; }
+.initial-prompt p { font-family: "Alumni Sans Pinstripe", cursive; font-size: 24px; font-weight: 600; }
+
+.loader {
+    width: 60px;
+    height: 60px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 50px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error p { font-size: 16px; color: #ffcdd2; margin-top: 10px; }
+
+/* --- Staggered Fade-in Animations --- */
+.weather.visible {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather.visible > * {
+    animation: fadeIn 0.8s ease-out both;
+}
+
+.weather.visible .weather-icon { animation-delay: 0s; }
+.weather.visible .temp { animation-delay: 0.2s; }
+.weather.visible .city { animation-delay: 0.4s; }
+.weather.visible .details { animation-delay: 0.6s; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.weather-icon {
+    width: 170px;
+    margin-top: 30px;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+.weather h1.temp { font-size: 80px; font-weight: 500; }
+.weather h2.city { font-size: 45px; font-weight: 400; margin-top: -10px; }
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: var(--details-margin-top);
+    width: 100%;
+}
+
+.col { display: flex; align-items: center; text-align: left; }
+.col img { width: 40px; margin-right: 10px; }
+.humidity, .wind { font-size: 28px; margin-top: -6px; }
+
+/* --- Responsive Design --- */
+@media (max-width: 480px) {
+    :root {
+        --card-padding: 30px 25px;
+        --details-margin-top: 40px;
+    }
+    body { padding: 10px; }
+    .title img { width: 80px; }
+    .search input { height: 50px; font-size: 22px; }
+    .search button { height: 50px; width: 50px; }
+    .weather h1.temp { font-size: 60px; }
+    .weather h2.city { font-size: 35px; }
+    .details {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        padding-left: 10%;
+    }
+    .humidity, .wind { font-size: 24px; }
+}

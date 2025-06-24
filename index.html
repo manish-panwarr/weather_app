@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>WeatherApp</title>
+    <link rel="icon" type="image/x-icon" href="images/mcreationn.png">
+    <link rel="stylesheet" href="style.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&family=Henny+Penny&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<main>
+    <div class="titleContainer">
+        <div class="title">
+            <img src="images/reshot-icon-weather-8CKJB9YN7X.svg" alt="Weather Icon">
+            <h2>Weather App</h2>
+        </div>
+    </div>
+   
+    <div class="card">
+        <div class="search">
+            <input type="text" placeholder="Enter city name..." spellcheck="false">
+            <button><img src="images/search.png" alt="Search"></button>
+        </div>
+        
+        <div class="initial-prompt">
+            <p>Enter a city to get the weather forecast.</p>
+        </div>
+
+        <div class="loader"></div>
+
+        <div class="error">
+            <p>Invalid city name. Please try again.</p>
+        </div>
+
+        <div class="weather">
+            <img src="images/rain.png" class="weather-icon">
+            <h1 class="temp">22°C</h1>
+            <h2 class="city">Dehradun</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="images/humidity.png" >
+                    <div>
+                        <p class="humidity">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <img src="images/wind.png" >
+                    <div>
+                        <p class="wind">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+        
+<script src="script.js"></script>
+</body>
+</html>
