@@ -1,10 +1,12 @@
 🌦️ Weather App
 An intuitive, mobile-responsive weather application that allows users to check real-time weather conditions for any city in the world. Built using HTML, CSS, and Vanilla JavaScript, this app communicates with the OpenWeatherMap API to fetch and display current weather data dynamically.
 
-📸 Preview [](https://manish-panwarr.github.io/weather_app/)
+📸 Preview 
+[live](https://manish-panwarr.github.io/weather_app/)
+
+Images 
 [Home page](https://github.com/user-attachments/assets/9724b11e-7a4c-411c-ba39-11f194272502)
 [Search result](https://github.com/user-attachments/assets/b3e0558e-9fc4-498b-9974-c6c7365223cd)
-
 
 🚀 Features
 🔎 City-Based Weather Search
